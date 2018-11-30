@@ -1,0 +1,15 @@
+documentation:
+  title: 'API 说明文档'
+  description: 'Wechat Server API 说明文档'
+server:
+  host: '0.0.0.0'
+  port: 80
+db:
+  host: '0.0.0.0'
+  port: 27017
+  db_name: wechatServer
+wechatServer:
+  url: https://api.weixin.qq.com/
+  appID: 开发者申请的appID
+  appSecret: 开发者申请的appSecret
+  token: 接口配置信息中的token

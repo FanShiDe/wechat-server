@@ -1,0 +1,14 @@
+{
+  "extends": "airbnb-base",
+  "parser": "babel-eslint",
+  "env": {
+    "browser": false,
+    "node": true
+  },
+  "rules": {
+    "no-console":"warn",
+    "global-require":"warn",
+    "camelcase":"warn",
+    "import/prefer-default-export": "off"
+  }
+}
