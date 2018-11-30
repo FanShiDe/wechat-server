@@ -5,10 +5,10 @@ exports.register = async (server, options, next) => {
     const { host, port, db_name } = options;
     await mongoose.connect(
       `mongodb://${host}:${port}/${db_name}`,
-      { useNewUrlParser: true }
+      { useNewUrlParser: true },
     );
     const db = mongoose.connection;
-    db.on('error', err => {
+    db.on('error', (err) => {
       server.log(['hapi-mongodb', 'error'], {
         msg: err.message || 'mongodb occured error',
       });
@@ -17,7 +17,7 @@ exports.register = async (server, options, next) => {
     db.on('connected', () => {
       console.log(
         '🍏 mongodb connect success: ',
-        `mongodb://${host}:${port}/${db_name}`
+        `mongodb://${host}:${port}/${db_name}`,
       );
       server.log(['hapi-mongodb', 'info'], { msg: 'mongodb connected' });
     });
@@ -25,7 +25,7 @@ exports.register = async (server, options, next) => {
     db.on('open', () => {
       console.log(
         '🍏 mongodb connect success: ',
-        `mongodb://${host}:${port}/${db_name}`
+        `mongodb://${host}:${port}/${db_name}`,
       );
     });
 

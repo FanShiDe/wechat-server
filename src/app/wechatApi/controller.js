@@ -11,7 +11,9 @@ export const wechatAuth = (request, reply) => {
    * nonce 随机数
    * echostr 随机字符串
    */
-  const { signature, timestamp, nonce, echostr } = request.query;
+  const {
+    signature, timestamp, nonce, echostr,
+  } = request.query;
   // 2.将token、timestamp、nonce三个参数进行字典序排序
   const array = [Config.get('wechatServer.token'), timestamp, nonce];
   array.sort();
@@ -34,7 +36,9 @@ export const userBind = async (request, reply) => {
   // ToUserName 开发者微信号
   // Event 事件类型, subscribe、unsubscribe、scan
   const {
-    xml: { FromUserName, ToUserName, Event, EventKey },
+    xml: {
+      FromUserName, ToUserName, Event, EventKey,
+    },
   } = request.pre.toXML;
   console.log('*******************');
   console.log(request.pre.toXML);
@@ -52,7 +56,7 @@ export const userBind = async (request, reply) => {
           authCode,
         },
       },
-      { upsert: true, new: true }
+      { upsert: true, new: true },
     );
     const xmlRes = toXML({
       ToUserName: FromUserName,
@@ -68,7 +72,7 @@ export const userBind = async (request, reply) => {
         $set: {
           nickName: nickname,
         },
-      }
+      },
     );
     return true;
   }
@@ -93,7 +97,7 @@ export const userBind = async (request, reply) => {
           $set: {
             nickName: nickname,
           },
-        }
+        },
       );
       return true;
     }
@@ -121,13 +125,13 @@ export const generateQRCode = async (request, reply) => {
           scene_str: authCode,
         },
       },
-    }
+    },
   );
   const { ticket } = result.data;
   const getPic = await axios({
     method: 'get',
     url: `https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=${encodeURI(
-      ticket
+      ticket,
     )}`,
     responseType: 'stream',
   });
@@ -138,10 +142,10 @@ export const generateQRCode = async (request, reply) => {
 export const getTempList = async (request, reply) => {
   const result = await axios.get(
     `${Config.get(
-      'wechatServer.url'
+      'wechatServer.url',
     )}cgi-bin/template/get_all_private_template?access_token=${
       global.access_token
-    }`
+    }`,
   );
   const { template_list } = result.data; // eslint-disable-line camelcase
   return reply(template_list);

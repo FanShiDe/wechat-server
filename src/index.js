@@ -18,13 +18,13 @@ server.on('log', (event, tags) => {
   switch (tagsKeys[1]) {
     case 'error': {
       console.log(
-        chalk[color || 'red'](`[${tagsKeys[0]}]|[${tagsKeys[1]}], ${msg}`)
+        chalk[color || 'red'](`[${tagsKeys[0]}]|[${tagsKeys[1]}], ${msg}`),
       );
       break;
     }
     default: {
       console.log(
-        chalk[color || 'blue'](`[${tagsKeys[0]}]|[${tagsKeys[1]}], ${msg}`)
+        chalk[color || 'blue'](`[${tagsKeys[0]}]|[${tagsKeys[1]}], ${msg}`),
       );
       break;
     }

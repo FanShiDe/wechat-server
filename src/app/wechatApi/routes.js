@@ -24,7 +24,7 @@ exports.register = (server, options, next) => {
               xml2js.parseString(
                 request.payload,
                 { explicitArray: false },
-                (err, json) => reply(json)
+                (err, json) => reply(json),
               );
             },
             assign: 'toXML',
