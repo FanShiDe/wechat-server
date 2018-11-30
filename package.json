@@ -15,8 +15,7 @@
   ],
   "scripts": {
     "start": "babel-node ./src/index.js",
-    "precommit": "lint-staged && yarn lint",
-    "lint": "./node_modules/.bin/eslint --fix src",
+    "lint": "./node_modules/.bin/eslint src",
     "build": "rm -rf dist && babel src -d dist --ignore='node_modules' && cp -r config dist/"
   },
   "devDependencies": {
@@ -46,9 +45,15 @@
     "mongoose": "^5.3.2",
     "xml2js": "^0.4.19"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "lint-staged": {
     "*.js": [
       "prettier --trailing-comma es5 --single-quote --write",
+      "eslint --fix",
       "git add"
     ],
     "yarn.lock": [
