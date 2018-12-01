@@ -2,6 +2,38 @@
 
 > 在使用前请先仔细阅读 [微信公众平台开发的注意事项](https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1445241432) 和 [接入指南](https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421135319)。
 
+#### 快速启动
+* 拉去代码。
+
+```shell
+git clone git@github.com:FanShiDe/wechat-server.git
+```
+
+* 根据个人环境修改配置文件中的配置项。
+
+```shell
+cp ./config/default.yml.staging ./config/default.yml
+```
+
+* 安装依赖，启动程序。
+
+```shell
+cd wechat-server
+yarn setup or npm run setup
+yarn start or npm run start
+```
+
+* 打包应用到dist目录下。
+```shell
+yarn build or npm run build
+```
+
+* 运行打包后的程序。
+```shell
+cd dist
+node index.js
+```
+
 #### 注意事项
 
 * 本地的服务器需要指定一个 `GET` 和 `POST` 的`同名接口`。
